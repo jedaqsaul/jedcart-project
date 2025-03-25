@@ -1,0 +1,116 @@
+{
+  "items": [
+    {
+      "sys": { "id": "1" },
+      "fields": {
+        "title": "Samsung Galaxy ,S24",
+        "price": 9999,
+        "image": {
+          "fields": {
+            "file": {
+              "url": "https://www.samsungmobilepress.com/file/FC05AE750AD6EB0673D9E9D4C157D4FDCA91C0319D37B2827A4ACC850D3D124959298BB89A1D18EEB9531CE7B6BDB56BB43890C99A07EF46FFD865333FEC385C3A4ECDA52E32E217D32C2807BAAF403A9124FE24BD2AD9F141EA995A91D14E9095EC253173B6A26FE1DB745A586CC1ADDE7D6D440FA45C94CA365A5CF1A540E7"
+            }
+          }
+        }
+      }
+    },
+    {
+      "sys": { "id": "2" },
+      "fields": {
+        "title": "Samsung galaxy S25 Ultra",
+        "price": 12.99,
+        "image": {
+          "fields": {
+            "file": {
+              "url": "https://www.samsungmobilepress.com/file/E2D865121417BED4CCCE3AB6288204C6D10F27F744C5DA9475826F3CB5DC71EF261AC479715828213145AFB12DE9D44B464767C4A30B4E584FA0694EC4CE33A95AF3914FF18C9539AD4BDB058282C9FA128C39363B2D1503347D5496C2410128A8340AD04090BD6582AE881B89F5B2257FA7343BBEC5725513CA21B107939A25B9AF41361FF726E729CE0E44560746EC"
+            }
+          }
+        }
+      }
+    },
+    {
+      "sys": { "id": "3" },
+      "fields": {
+        "title": "google pixel 9 pro",
+        "price": 12.99,
+        "image": {
+          "fields": {
+            "file": {
+              "url": "https://fdn2.gsmarena.com/vv/pics/google/google-pixel-9-pro-1.jpg"
+            }
+          }
+        }
+      }
+    },
+    {
+      "sys": { "id": "4" },
+      "fields": {
+        "title": "Mororolla razr + 2024",
+        "price": 22.99,
+        "image": {
+          "fields": {
+            "file": {
+              "url": "https://fdn2.gsmarena.com/vv/pics/motorola/motorola-razr-50-ultra-1.jpg"
+            }
+          }
+        }
+      }
+    },
+    {
+      "sys": { "id": "5" },
+      "fields": {
+        "title": "Honor magic 7",
+        "price": 88.99,
+        "image": {
+          "fields": {
+            "file": {
+              "url": "https://fdn2.gsmarena.com/vv/pics/honor/honor-magic7-pro-1.jpg"
+            }
+          }
+        }
+      }
+    },
+    {
+      "sys": { "id": "6" },
+      "fields": {
+        "title": "Xiaomi 15",
+        "price": 32.99,
+        "image": {
+          "fields": {
+            "file": {
+              "url": "https://fdn2.gsmarena.com/vv/pics/xiaomi/xiaomi-15-1.jpg"
+            }
+          }
+        }
+      }
+    },
+    {
+      "sys": { "id": "7" },
+      "fields": {
+        "title": "samsung galaxy z fold 6",
+        "price": 45.99,
+        "image": {
+          "fields": {
+            "file": {
+              "url": "https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-z-fold6.jpg"
+            }
+          }
+        }
+      }
+    },
+    {
+      "sys": { "id": "8" },
+      "fields": {
+        "title": "sony XPeria 1 VI",
+        "price": 33.99,
+        "image": {
+          "fields": {
+            "file": {
+              "url": "https://fdn2.gsmarena.com/vv/pics/sony/sony-xperia-1-vi-1.jpg"
+            }
+          }
+        }
+      }
+    }
+  ]
+}
