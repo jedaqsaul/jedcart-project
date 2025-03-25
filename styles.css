@@ -62,7 +62,7 @@ body {
 
 .banner {
   text-align: center;
-  background-color: aliceblue;
+  background-color: rgb(1, 86, 161);
   display: inline-block;
   padding: 2rem;
 }
@@ -131,4 +131,34 @@ body {
 }
 .bag-btn:hover{
   color:white'
+}
+.fa-shopping-cart{
+  margin-right: 0.5rem;
+}
+.img-container:hover .bag-btn{
+  transform: translateX(0);
+}
+
+.product-img{
+  display: block;
+  width: 100%;
+  min-height: 12rem;
+  transition:all 0.3s linear;
+}
+.img-container:hover .product-img{
+  opacity: 0.5;
+}
+
+.product h3{
+  text-transform: capitalize;
+  font-size: 1.1rem;
+  margin-top: 1rem;
+  letter-spacing: 0.1rem;
+  text-align: center;
+}
+.product h4{
+  margin-top: 0.7rem;
+  letter-spacing: 0.1rem;
+  color:orangered;
+  text-align: center;
 }
