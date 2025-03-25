@@ -4,28 +4,29 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./styles.css" />
+    <script
+      src="https://kit.fontawesome.com/7fb31cfd0f.js"
+      crossorigin="anonymous"
+    ></script>
     <title>jedcart project</title>
   </head>
   <body>
-    <header>
-      <div class="header-left">
-        <img
-          src="assets/jedcart-logo.png"
-          alt="This is the company logo image"
-        />
+    <!-- navbar -->
+    <nav class="navbar">
+      <div class="navbar-center">
+        <span class="nav-icon">
+          <i class="fas fa-bars"></i>
+        </span>
+        <img src="./assets/jedcart-logo.png" alt="store logo" />
+        <div class="cart-btn">
+          <span class="nav-icon">
+            <i class="fas fa-cart-plus"></i>
+          </span>
+          <div class="cart-items">0</div>
+        </div>
       </div>
-      <div class="header-middle">
-        <input
-          type="text"
-          placeholder="search"
-          class="search-bar"
-          id="inputElement"
-        />
-      </div>
-      <div class="header-right">
-        <img src="" alt="This is the cart-icon image" />
-      </div>
-    </header>
+    </nav>
+    <!-- end of navbar -->
     <script src="./main.js"></script>
   </body>
 </html>
