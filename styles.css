@@ -50,3 +50,42 @@ body {
   height: 60px;
   width: 150px;
 }
+
+.hero {
+  min-height: calc(100vh -60px);
+  background: url("https://media.istockphoto.com/id/1182647518/photo/excited-girl-using-smartphone-holding-finger-on-chin-pink-background.jpg?s=612x612&w=0&k=20&c=BV-9oTAoRKaS8p6FvARn28zeUypuLsDo0O3254oXSnE=")
+    center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.banner {
+  text-align: center;
+  background-color: aliceblue;
+  display: inline-block;
+  padding: 2rem;
+}
+.banner-title {
+  font-size: 3.4rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  margin-bottom: 3rem;
+}
+
+.banner-btn {
+  padding: 1rem 3rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  font-size: 1rem;
+  background: orangered;
+  color: black;
+  border: 1px solid orangered;
+  transition: all 0.3s linear;
+  cursor: pointer;
+}
+
+.banner-btn:hover {
+  background: transparent;
+  color: orangered;
+}
