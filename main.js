@@ -36,10 +36,10 @@ document.addEventListener("DOMContentLoaded", () => {
           <div class="img-container">
             <img
               src="${product.image}"
-              alt="${product.title}"
+              alt="${product.name}"
               class="product-img"
             />
-            <button class="bag-btn" data-id="1">
+            <button class="bag-btn" data-id="${product.id}">
               <i class="fas fa-shopping-cart"></i>
               add to bag
             </button>
@@ -88,15 +88,15 @@ document.addEventListener("DOMContentLoaded", () => {
       .map(
         (item) => `
     <div class="cart-item">
-            <img src="${item.image}" alt="${item.title}" />
+            <img src="${item.image}" alt="${item.name}" />
             <div>
-              <h4>${item.title}</h4>
+              <h4>${item.name}</h4>
               <h5>${item.price}</h5>
               <span class="remove-item" data-id="${item.id}">remove</span>
             </div>
             <div>
               <i class="fas fa-chevron-up" data-id="${item.id}"></i>
-              <p class="item-amount" data-id="${item.amount}">1</p>
+              <p class="item-amount" data-id="${item.id}">${item.amount}</p>
               <i class="fas fa-chevron-down" data-id="${item.id}"></i>
             </div>
           </div>
@@ -116,6 +116,12 @@ document.addEventListener("DOMContentLoaded", () => {
         removeItem(event.target.dataset.id);
       });
     });
+  }
+
+  //add clear-cart functionality
+  function clearCart() {
+    cart = [];
+    updateCartUI();
   }
 
   //remove items from the cart
@@ -142,3 +148,8 @@ document.addEventListener("DOMContentLoaded", () => {
   //RUn fetch products and load everything when the page first loads
   fetchProducts();
 });
+clearCartBtn.addEventListener("click", clearCart);
+//Remainign issues
+// fix the increase/decresase quantity button;
+// similar products appear on the cart more than once
+//clear cart button clears the cart
