@@ -24,4 +24,37 @@ async function fetchProducts() {
     console.error(error);
   }
 }
-console.log(fetchProducts());
+//create function to display products
+
+function displayProducts(products) {
+  productsContainer.innerHTML = products
+    .map(
+      (product) =>
+        //copy the article html and insert the appropriate product properties
+        `
+      <article class="product">
+          <div class="img-container">
+            <img
+              src="${product.image}"
+              alt="${product.title}"
+              class="product-img"
+            />
+            <button class="bag-btn" data-id="1">
+              <i class="fas fa-shopping-cart"></i>
+              add to bag
+            </button>
+          </div>
+          <h3>${product.title}</h3>
+          <h4>${product.price}</h4>
+        </article>
+    `
+    )
+    .join("");
+
+  document.querySelectorAll(".bag-btn").forEach((button) => {
+    button.addEventListener("click", (event) => {
+      let productId = event.target.dataset.id;
+      addToCart(productId);
+    });
+  });
+}
