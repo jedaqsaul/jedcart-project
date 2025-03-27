@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const cartDOM = document.querySelector(".cart");
   const cartBtn = document.querySelector(".cart-btn");
   const closeCartBtn = document.querySelector(".close-cart");
+  const clearCartBtn = document.querySelector(".clear-cart");
 
   let cart = [];
   console.log(cart);
@@ -44,7 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
               add to bag
             </button>
           </div>
-          <h3>${product.title}</h3>
+          <h3>${product.name}</h3>
           <h4>${product.price}</h4>
         </article>
     `
@@ -66,13 +67,20 @@ document.addEventListener("DOMContentLoaded", () => {
   //finally we need to update the cart UI
 
   function addToCart(id) {
-    fetch(`http://localhost:3000/products/${id}`)
-      .then((res) => res.json())
-      .then((product) => {
-        const cartItem = { ...product, amount: 1 };
-        cart.push(cartItem);
-        updateCartUI();
-      });
+    const existingItem = cart.find((item) => item.id == id);
+    if (existingItem) {
+      existingItem.amount += 1; // Instead of duplicating, just increase the amount
+    } else {
+      fetch(`http://localhost:3000/products/${id}`)
+        .then((res) => res.json())
+        .then((product) => {
+          const cartItem = { ...product, amount: 1 };
+          cart.push(cartItem);
+          updateCartUI();
+        });
+      return;
+    }
+    updateCartUI();
   }
 
   //Let us try to update the cart UI
@@ -95,16 +103,20 @@ document.addEventListener("DOMContentLoaded", () => {
               <span class="remove-item" data-id="${item.id}">remove</span>
             </div>
             <div>
-              <i class="fas fa-chevron-up" data-id="${item.id}"></i>
+              
               <p class="item-amount" data-id="${item.id}">${item.amount}</p>
-              <i class="fas fa-chevron-down" data-id="${item.id}"></i>
+
+              
             </div>
           </div>
     `
       )
       .join("");
     //update the cart Item count
-    cartItems.textContent = cart.length;
+    cartItems.textContent = cart.reduce(
+      (total, item) => total + item.amount,
+      0
+    );
     // calculate and update the total cart price=>>
     cartTotal.textContent = cart.reduce(
       (total, item) => total + item.price * item.amount,
@@ -119,23 +131,23 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   //add clear-cart functionality
-  function clearCart() {
-    cart = [];
-    updateCartUI();
-  }
 
   //remove items from the cart
   // to remove items from the cart we need to implement .filter
   //We filter out an item and update the cartUI
   //the function takes in the product's id as a parameter
 
+  //At this point the cart is still hidden from the screen
+  //I need to implement a class that will enable the cart
   function removeItem(id) {
-    cart = cart.filter((item) => item.id !== id);
+    cart = cart.filter((item) => item.id !== id); // Ensure only the selected item is removed
     updateCartUI();
   }
 
-  //At this point the cart is still hidden from the screen
-  //I need to implement a class that will enable the cart
+  function clearCart() {
+    cart = [];
+    updateCartUI();
+  }
 
   function toogleCart() {
     cartOverlay.classList.toggle("transparentBcg");
@@ -145,11 +157,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
   cartBtn.addEventListener("click", toogleCart);
   closeCartBtn.addEventListener("click", toogleCart);
+  clearCartBtn.addEventListener("click", clearCart);
   //RUn fetch products and load everything when the page first loads
   fetchProducts();
 });
-clearCartBtn.addEventListener("click", clearCart);
+
 //Remainign issues
-// fix the increase/decresase quantity button;
+
 // similar products appear on the cart more than once
 //clear cart button clears the cart
+
+// duplicate items in the cart
+//local storage

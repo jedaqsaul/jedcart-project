@@ -244,15 +244,6 @@ body {
   cursor: pointer;
 }
 
-.fa-chevron-up {
-  cursor: pointer;
-  color: green;
-}
-.fa-chevron-donw {
-  cursor: pointer;
-  color: red;
-}
-
 .cart-footer {
   margin-top: 32px;
   letter-spacing: 1.6px;
