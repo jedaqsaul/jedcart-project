@@ -118,3 +118,13 @@ function updateCartUI() {
     });
   });
 }
+
+//remove items from the cart
+// to remove items from the cart we need to implement .filter
+//We filter out an item and update the cartUI
+//the function takes in the product's id as a parameter
+
+function removeItem(id) {
+  cart = cart.filter((item) => item.id !== id);
+  updateCartUI();
+}
