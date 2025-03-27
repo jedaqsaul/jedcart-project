@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const closeCartBtn = document.querySelector(".close-cart");
 
   let cart = [];
+  console.log(cart);
 });
 
 //fetch prouducts from db.json
@@ -66,11 +67,54 @@ function displayProducts(products) {
 //finally we need to update the cart UI
 
 function addToCart(id) {
-  fetch(`https://localhost:3000/products/${id}`)
+  fetch(`http://localhost:3000/products/${id}`)
     .then((res) => res.json())
     .then((product) => {
       const cartItem = { ...product, amount: 1 };
       cart.push(cartItem);
       updateCartUI();
     });
+}
+
+//Let us try to update the cart UI
+//get the cartITEM html and generate it with javascript
+//add a data attribute with an id to uniquely identify the item being updated on the UI
+
+function updateCartUI() {
+  // loop through the cart array
+  //use .map to turn each item into an HTML string
+  //Each item has an image, h4, h5 a span and an increase and decrease quantity  tag
+  //use .join to ensure items are added without extra commas
+  cartContent.innerHTML = cart
+    .map(
+      (item) => `
+    <div class="cart-item">
+            <img src="${item.image}" alt="${item.title}" />
+            <div>
+              <h4>${item.title}</h4>
+              <h5>${item.price}</h5>
+              <span class="remove-item" data-id="${item.id}">remove</span>
+            </div>
+            <div>
+              <i class="fas fa-chevron-up" data-id="${item.id}"></i>
+              <p class="item-amount" data-id="${item.amount}">1</p>
+              <i class="fas fa-chevron-down" data-id="${item.id}"></i>
+            </div>
+          </div>
+    `
+    )
+    .join("");
+  //update the cart Item count
+  cartItems.textContent = cart.length;
+  // calculate and update the total cart price=>>
+  cartTotal.textContent = cart.reduce(
+    (total, item) => total + item.price * item.amount,
+    0
+  );
+  //call function to remove the clicked item
+  document.querySelectorAll(".remove-item").forEach((button) => {
+    button.addEventListener("click", (event) => {
+      removeItem(event.target.dataset.id);
+    });
+  });
 }
