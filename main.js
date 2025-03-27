@@ -31,7 +31,6 @@ document.addEventListener("DOMContentLoaded", () => {
     productsContainer.innerHTML = products
       .map(
         (product) =>
-          //copy the article html and insert the appropriate product properties
           `
       <article class="product">
           <div class="img-container">
@@ -46,7 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
             </button>
           </div>
           <h3>${product.name}</h3>
-          <h4>${product.price}</h4>
+          <h4>KES ${product.price}</h4>  <!-- Changed to show KES -->
         </article>
     `
       )
@@ -59,6 +58,38 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
   }
+
+  function updateCartUI() {
+    cartContent.innerHTML = cart
+      .map(
+        (item) => `
+    <div class="cart-item">
+            <img src="${item.image}" alt="${item.name}" />
+            <div>
+              <h4>${item.name}</h4>
+              <h5>KES ${item.price}</h5>  <!-- Changed to show KES -->
+              <span class="remove-item" data-id="${item.id}">remove</span>
+            </div>
+            <div>
+              <p class="item-amount" data-id="${item.id}">${item.amount}</p>
+            </div>
+          </div>
+    `
+      )
+      .join("");
+
+    cartItems.textContent = cart.reduce(
+      (total, item) => total + item.amount,
+      0
+    );
+
+    // Display total price in KES
+    cartTotal.textContent = `KES ${cart.reduce(
+      (total, item) => total + item.price * item.amount,
+      0
+    )}`;
+  }
+
   //Add to the cart
   // to add to the cart we need to fetch products form the db.json- this is for a single a specific id
   //each product will be added and saved in a cartItem.
@@ -112,6 +143,13 @@ document.addEventListener("DOMContentLoaded", () => {
     `
       )
       .join("");
+
+    //call function to remove the clicked item
+    document.querySelectorAll(".remove-item").forEach((button) => {
+      button.addEventListener("click", (event) => {
+        removeItem(event.target.dataset.id);
+      });
+    });
     //update the cart Item count
     cartItems.textContent = cart.reduce(
       (total, item) => total + item.amount,
@@ -122,12 +160,6 @@ document.addEventListener("DOMContentLoaded", () => {
       (total, item) => total + item.price * item.amount,
       0
     );
-    //call function to remove the clicked item
-    document.querySelectorAll(".remove-item").forEach((button) => {
-      button.addEventListener("click", (event) => {
-        removeItem(event.target.dataset.id);
-      });
-    });
   }
 
   //add clear-cart functionality
