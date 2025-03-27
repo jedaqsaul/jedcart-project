@@ -128,3 +128,15 @@ function removeItem(id) {
   cart = cart.filter((item) => item.id !== id);
   updateCartUI();
 }
+
+//At this point the cart is still hidden from the screen
+//I need to implement a class that will enable the cart
+
+function toogleCart() {
+  cartOverlay.classList.toogle("transparentBcg");
+  cartDOM.classList.toogle("show-cart");
+}
+//let us now add event listener to the cartBtn and the closeCartBtn
+
+cartBtn.addEventListener("click", toogleCart);
+closeCartBtn.addEventListener("click", toogleCart);
