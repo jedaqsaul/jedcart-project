@@ -58,3 +58,19 @@ function displayProducts(products) {
     });
   });
 }
+//Add to the cart
+// to add to the cart we need to fetch products form the db.json- this is for a single a specific id
+//each product will be added and saved in a cartItem.
+//Every click is a single amount
+//push a single cart item for every click
+//finally we need to update the cart UI
+
+function addToCart(id) {
+  fetch(`https://localhost:3000/products/${id}`)
+    .then((res) => res.json())
+    .then((product) => {
+      const cartItem = { ...product, amount: 1 };
+      cart.push(cartItem);
+      updateCartUI();
+    });
+}
